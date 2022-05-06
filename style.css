@@ -54,8 +54,8 @@ h1 {
   text-transform: uppercase;
 }
 
-.keyboard-button:visited,
-.keyboard-button:focus,
-.keyboard-button:link{
-    color: green;
+#keyboard-cont div:visited,
+#keyboard-cont div:focus,
+#keyboard-cont div:link{
+    color: red;
 }
