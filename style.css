@@ -55,6 +55,7 @@ h1 {
 }
 
 #keyboard-cont div:visited,
-#keyboard-cont div:focus{
+#keyboard-cont div:focus,
+#keyboard-cont div:link{
     color: red;
 }
