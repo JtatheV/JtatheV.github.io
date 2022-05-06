@@ -39,7 +39,6 @@ h1 {
 
 #keyboard-cont div {
   display: flex;
-  color:red; 
 }
 
 .second-row {
@@ -53,5 +52,6 @@ h1 {
   margin: 0 2px;
   cursor: pointer;
   text-transform: uppercase;
+   color:red; 
 }
 
