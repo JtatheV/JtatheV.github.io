@@ -52,6 +52,7 @@ h1 {
   margin: 0 2px;
   cursor: pointer;
   text-transform: uppercase;
-    color:black; 
+  color:black; 
+  white-space: nowrap;
 }
 
