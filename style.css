@@ -53,6 +53,7 @@ h1 {
   cursor: pointer;
   text-transform: uppercase;
 }
-.keyboard-button:visited {
+.keyboard-button:visited,
+.keyboard-button:focus{
     color: red;
 }
