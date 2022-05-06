@@ -54,8 +54,19 @@ h1 {
   text-transform: uppercase;
 }
 
-#keyboard-cont div:visited,
-#keyboard-cont div:focus,
-#keyboard-cont div:link{
+/* A link that has not been visited */
+a:link {
+    color: pink;
+}
+/* A link that has been visited */
+a:visited {
+    color: blue;
+}
+/* A link that is hovered on */
+a:hover {
     color: red;
+}
+/* A link that is selected */
+a:active {
+    color: green;
 }
