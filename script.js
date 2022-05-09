@@ -39,6 +39,7 @@ document.addEventListener("keyup", (e) => {
     }
 
     if (pressedKey === "Enter") {
+        alert("you hit enter")
         checkGuess()
         return
     }
