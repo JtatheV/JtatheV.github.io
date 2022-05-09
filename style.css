@@ -51,15 +51,15 @@ h1 {
   font-size: 3rem; /* orig 1rem  */
   font-weight: 300; /* orig 700 */
   padding: 0.3rem;
-  margin: 0 2px;
+  margin: 0 3px;
   cursor: pointer;
   text-transform: uppercase;
   color:black; /* JV added to fix mobile color issue */
 }
 
 .keyboard-button {
-  height: 6.5rem; /* JV added  */
-  width: 6.5rem; /* JV added */
+  height: 5rem; /* JV added  */
+  width: 5rem; /* JV added */
   justify-content: center; /* JV added */
   align-items: center; /* JV added */
 } 
