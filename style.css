@@ -15,8 +15,8 @@ h1 {
   margin: 2px;
   font-size: 2.5rem; /* orig 2.5rem */
   font-weight: 700;
-  height: 6rem; /* orig 3rem */
-  width: 6rem; /* orig 3rem */
+  height: 5rem; /* orig 3rem */
+  width: 5rem; /* orig 3rem */
   display: flex;
   justify-content: center;
   align-items: center;
