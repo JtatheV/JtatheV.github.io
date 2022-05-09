@@ -59,10 +59,11 @@ h1 {
   }  
 
   .keyboard-button {
-    height: 2rem; /* JV added  */
-    width: 2rem; /* JV added */
+    height: 3rem; /* JV added  */
+    width: 3rem; /* JV added */
     justify-content: center; /* JV added */
     align-items: center; /* JV added */
+    text-align: center;
   } 
 }
 
