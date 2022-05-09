@@ -6,6 +6,7 @@ h1 {
   display: flex;
   align-items: center;
   flex-direction: column;
+  background-color:black;
 }
 
 .letter-box {
@@ -39,6 +40,7 @@ h1 {
 
 #keyboard-cont div {
   display: flex;
+  background-color:black;
 }
 
 .second-row {
