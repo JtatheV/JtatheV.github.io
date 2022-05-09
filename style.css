@@ -40,7 +40,7 @@ h1 {
 
 #keyboard-cont div {
   display: flex;
- border-style: dashed;
+ /* border-style: dashed;*/
 }
 
 .second-row {
