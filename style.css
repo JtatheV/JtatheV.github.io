@@ -54,7 +54,11 @@ h1 {
   margin: 0 2px;
   cursor: pointer;
   text-transform: uppercase;
-  color:black; 
-  white-space: nowrap;
+  color:black; /* JV added to fix mobile color issue */
+  height: 6.5rem; /* JV added  */
+  width: 6.5rem; /* JV added */
+  justify-content: center; /* JV added */
+  align-items: center; /* JV added */
+  white-space: nowrap; /* JV added to fix mobile wrapping issue*/
 }
 
