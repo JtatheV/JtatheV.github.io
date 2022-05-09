@@ -39,7 +39,6 @@ document.addEventListener("keyup", (e) => {
     }
 
     if (pressedKey === "Enter") {
-        alert("you hit enter")
         checkGuess()
         return
     }
@@ -169,7 +168,9 @@ document.getElementById("keyboard-cont").addEventListener("click", (e) => {
     
     if (!target.classList.contains("keyboard-button-wide")) {
         return
-    }
+    }elseif (!target.classList.contains("keyboard-button")) {
+        return
+    }    
     let key = target.textContent
 
     if (key === "Del") {
