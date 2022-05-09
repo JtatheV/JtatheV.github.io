@@ -59,8 +59,8 @@ h1 {
   }  
 
   .keyboard-button {
-    height: 3rem; /* JV added  */
-    width: 3rem; /* JV added */
+    height: 6rem; /* JV added  */
+    width: 6rem; /* JV added */
     justify-content: center; /* JV added */
     align-items: center; /* JV added */
     text-align: center;
