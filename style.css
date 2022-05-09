@@ -48,8 +48,8 @@ h1 {
 }
 
 .keyboard-button {
-  font-size: 8rem; /* orig 1rem */
-  font-weight: 700;
+  font-size: 6rem; /* orig 1rem */
+  font-weight: 500; /* orig 700 */
   padding: 0.3rem;
   margin: 0 2px;
   cursor: pointer;
