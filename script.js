@@ -166,7 +166,7 @@ function shadeKeyBoard(letter, color) {
 document.getElementById("keyboard-cont").addEventListener("click", (e) => {
     const target = e.target
     
-    if (!target.classList.contains("keyboard-button") || !target.classList.contains("keyboard-button-wide")) {
+    if (!target.classList.contains("keyboard-button*")) {
         return
     } 
     let key = target.textContent
