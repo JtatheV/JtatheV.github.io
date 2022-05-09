@@ -22,6 +22,7 @@ h1 {
   justify-content: center;
   align-items: center;
   text-transform: uppercase;
+ background-color:white;
 }
 
 .filled-box {
