@@ -47,23 +47,44 @@ h1 {
   margin: 0.5rem 0;
 }
 
-.keyboard-button, .keyboard-button-wide { 
-  font-size: 3rem; /* orig 1rem  */
-  font-weight: 300; /* orig 700 */
-  padding: 0.3rem;
-  margin: 0 3px; /* orig 0 2px */
-  cursor: pointer;
-  text-transform: uppercase;
-  color:black; /* JV added to fix mobile color issue */
+@media only screen and (max-width: 600px) {
+  .keyboard-button, .keyboard-button-wide { 
+    font-size: 1rem;
+    font-weight: 700; 
+    padding: 0.3rem;
+    margin: 0 2px; /* orig 0 2px */
+    cursor: pointer;
+    text-transform: uppercase;
+    color:black; /* JV added to fix mobile color issue */
+  }  
+
+  .keyboard-button {
+    height: 1.1rem; /* JV added  */
+    width: 1.1rem; /* JV added */
+    justify-content: center; /* JV added */
+    align-items: center; /* JV added */
+  } 
 }
 
-.keyboard-button {
-  height: 5rem; /* JV added  */
-  width: 5rem; /* JV added */
-  justify-content: center; /* JV added */
-  align-items: center; /* JV added */
-} 
- 
+@media only screen and (min-width: 601px) {
+  .keyboard-button, .keyboard-button-wide { 
+    font-size: 3rem; /* orig 1rem  */
+    font-weight: 300; /* orig 700 */
+    padding: 0.3rem;
+    margin: 0 3px; /* orig 0 2px */
+    cursor: pointer;
+    text-transform: uppercase;
+    color:black; /* JV added to fix mobile color issue */
+  }
+
+  .keyboard-button {
+    height: 5rem; /* JV added  */
+    width: 5rem; /* JV added */
+    justify-content: center; /* JV added */
+    align-items: center; /* JV added */
+  } 
+}
+
 .keyboard-button-wide { /* JV added new class for Enter and Del buttons */
   white-space: nowrap; /* JV added to fix mobile wrapping issue*/
-}
+} 
