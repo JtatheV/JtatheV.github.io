@@ -168,7 +168,7 @@ document.getElementById("keyboard-cont").addEventListener("click", (e) => {
     
     if (!target.classList.contains("keyboard-button-wide")) {
         return
-    }elseif (!target.classList.contains("keyboard-button")) {
+    }else if (!target.classList.contains("keyboard-button")) {
         return
     }    
     let key = target.textContent
