@@ -48,7 +48,7 @@ h1 {
 }
 
 .keyboard-button, .keyboard-button-wide { 
-  font-size: 3rem; /* orig 1rem */
+  font-size: 3rem; /* orig 1rem  */
   font-weight: 300; /* orig 700 */
   padding: 0.3rem;
   margin: 0 2px;
