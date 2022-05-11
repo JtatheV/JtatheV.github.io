@@ -36,6 +36,7 @@ function initBoard() {
 
 initBoard();
 //toastr.options.positionClass = 'toast-center-center';
+toastr.options.positionClass = 'toast-bottom-center';
 
 document.addEventListener("keyup", (e) => {
 
