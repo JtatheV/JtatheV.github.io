@@ -34,7 +34,8 @@ function initBoard() {
     }
 }
 
-initBoard()
+initBoard();
+toastr.options.positionClass = 'toast-top-center';
 
 document.addEventListener("keyup", (e) => {
 
@@ -274,6 +275,7 @@ function share(textIn) {
     } 
     resultsstring += "\n" + textIn; //add the success/fail message
     copyToClipboard(resultsstring);
+    toastr.success("Your results are copied to clipboard and ready to share!");
     return(resultsstring);
 }
 
