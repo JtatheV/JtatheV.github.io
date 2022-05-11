@@ -6,17 +6,16 @@ h1 {
   display: flex;
   align-items: center;
   flex-direction: column;
- /* border-style: dashed;*/
 }
 
 .letter-box {
   border: 2px solid gray;
   border-radius: 3px;
   margin: 2px;
-  font-size: 2.5rem; /* orig 2.5rem */
+  font-size: 2.5rem; 
   font-weight: 700;
-  height: 4.5rem; /* orig 3rem */
-  width: 4.5rem; /* orig 3rem */
+  height: 4.5rem; 
+  width: 4.5rem; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -54,63 +53,42 @@ h1 {
     margin: 0 0; /* orig 0 2px */
     cursor: pointer;
     text-transform: uppercase;
-    color:black; /* JV added to fix mobile color issue */
+    color:black; /* added to fix mobile color issue */
   }  
 
   .keyboard-button {
-    height: 3rem; /* JV added  */
-    width: 3rem; /* JV added */
-    justify-content: center; /* JV added */
-    align-items: center; /* JV added */
+    height: 3rem; 
+    width: 3rem; 
+    justify-content: center; 
+    align-items: center; 
     text-align: center;
   } 
 }
 
 @media only screen and (min-width: 601px) {
   .keyboard-button, .keyboard-button-wide { 
-    font-size: 3rem; /* orig 1rem  */
-    font-weight: 300; /* orig 700 */
+    font-size: 3rem; 
+    font-weight: 300; 
     padding: 0.3rem;
-    margin: 0 3px; /* orig 0 2px */
+    margin: 0 3px; 
     cursor: pointer;
     text-transform: uppercase;
-    color:black; /* JV added to fix mobile color issue */
+    color:black; /* added to fix mobile color issue */
   }
 
   .keyboard-button {
-    height: 5rem; /* JV added  */
-    width: 5rem; /* JV added */
-    justify-content: center; /* JV added */
-    align-items: center; /* JV added */
+    height: 5rem; 
+    width: 5rem; 
+    justify-content: center; 
+    align-items: center; 
   } 
 }
 
-.keyboard-button-wide { /* JV added new class for Enter and Del buttons */
-  white-space: nowrap; /* JV added to fix mobile wrapping issue*/
+.keyboard-button-wide { /* new class for Enter and Del buttons */
+  white-space: nowrap; /* added to fix mobile wrapping issue*/
 }
 
 .results-panel {
     font-size: 3rem; 
     font-weight: 300;   
 }
-
-/* .toast-top-center { 
-    top: 12px; 
-    left: 50%; 
-    margin-left: -150px; 
-} 
-@media all and (max-width: 240px) { 
-    .toast-top-center { 
-        margin-left: -54px; 
-    } 
-} 
-@media all and (min-width: 241px) and (max-width: 320px) { 
-    .toast-top-center { 
-        margin-left: -64px; 
-    } 
-} 
-@media all and (min-width: 321px) and (max-width: 480px) { 
-    .toast-top-center { 
-        margin-left: -96px; 
-    } 
-}*/

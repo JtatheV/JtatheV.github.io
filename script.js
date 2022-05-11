@@ -35,7 +35,7 @@ function initBoard() {
 }
 
 initBoard();
-toastr.options.positionClass = 'toast-top-center';
+toastr.options.positionClass = '.toast-center-center';
 
 document.addEventListener("keyup", (e) => {
 
@@ -107,7 +107,6 @@ function checkGuess () {
         return
     }
 
-    //JV ADDED 11.5.22
     //guess is long enough and in list - add an empty row in guesshistory to be updated below
     guesshistory.push([0, 0, 0, 0, 0]);
     
@@ -123,9 +122,8 @@ function checkGuess () {
         if (letterPosition === -1) {
             letterColor = 'grey'
             
-            //JV ADDED 11.5.22
             guesshistory[6-guessesRemaining][i]=0;
-            //END
+
         } else {
             // now, letter is definitely in word
             // if letter index and right guess index are the same
@@ -133,15 +131,11 @@ function checkGuess () {
             if (currentGuess[i] === rightGuess[i]) {
                 // shade green 
                 letterColor = 'green'
-                //JV ADDED 11.5.22
                 guesshistory[6-guessesRemaining][i]=1;
-                //END    
             } else {
                 // shade box yellow
                 letterColor = 'yellow'
-                //JV ADDED 11.5.22
-                guesshistory[6-guessesRemaining][i]=-1;
-                //END                
+                guesshistory[6-guessesRemaining][i]=-1;             
             }
 
             rightGuess[letterPosition] = "#"
@@ -275,7 +269,7 @@ function share(textIn) {
     } 
     resultsstring += "\n" + textIn; //add the success/fail message
     copyToClipboard(resultsstring);
-    toastr.success("Your results are copied to clipboard and ready to share!");
+    toastr.success("Your results are copied to clipboard and ready to share!"); 
     return(resultsstring);
 }
 
