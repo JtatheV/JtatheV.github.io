@@ -162,8 +162,6 @@ function checkGuess () {
         toastr.success("You guessed right! Game over!")
         guessesRemaining = 0
         document.getElementById('success-panel').style.display = 'block';
-        //let successDiv = document.getElementById('success-panel-text');
-        //successDiv.style.display = 'block';
   
         let newcontent = document.createElement('div');
         newcontent.innerHTML = successMsg;
@@ -183,12 +181,10 @@ function checkGuess () {
             toastr.error(`The right word was: "${rightGuessString}"`)
             document.getElementById('sorry-panel').style.display = 'block';
             let sorryDiv = document.getElementById('sorry-panel-text');
-            //sorryDiv.style.display = 'block';
-            //sorryDiv.innerHTML = `Sorry! The right word was: "${rightGuessString}" \n`
 
             let newcontent1 = document.createElement('div');
             let newcontent2 = document.createElement('div');
-            newcontent1.innerHTML = `Sorry! The right word was: "${rightGuessString}". \n`
+            newcontent1.innerHTML = `Sorry! The right word was: <b>"${rightGuessString}"</b>. \n`
             newcontent2.innerHTML = sorryMsg;
 
             while (newcontent1.firstChild) {
@@ -270,25 +266,26 @@ function convertToEmoji(guess) {
     }
 }
 
-function share() {
+function share(textIn) {
     var resultsstring = "";
     
     for (let i = 0; i < guesshistory.length; i++) { 
         for (let j = 0; j < guesshistory[i].length; j++) {
-            resultsstring += convertToEmoji(guesshistory[i][j]);
-            
+            resultsstring += convertToEmoji(guesshistory[i][j]);            
         }   resultsstring += "\n"; //add carriage return
-    }
+    } 
+    resultsstring += "\n" + textIn; //add the success/fail message
     copyToClipboard(resultsstring);
     return(resultsstring);
 }
 
 // Attach the "click" event to share buttons
-document.getElementById("share-button").addEventListener("click", (e) => {
-  share();
+document.getElementById("share-button-success").addEventListener("click", (e) => {
+    let guessStr = (guesshistory.length>1) ? " guesses" :" guess";
+    share("HUZZAH! I just solved today\'s Dundle in " + guesshistory.length + guessStr + "!  Head to https://www.crithitbrit.com/dundle to see if you can do better.");
 })
-document.getElementById("share-button2").addEventListener("click", (e) => {
-  share();
+document.getElementById("share-button-fail").addEventListener("click", (e) => {
+    share("Uh oh! I was beaten by today\'s Dundle!  Will you fare better - head to https://www.crithitbrit.com/dundle to have a go.");
 })
 
 function copyToClipboard(text) {
