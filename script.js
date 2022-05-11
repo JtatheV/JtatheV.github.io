@@ -1,10 +1,20 @@
 import { WORDS } from "https://jtathev.github.io/words.js";
+import { SUCCESS_WORDS } from "https://jtathev.github.io/success.js";
+import { SORRY_WORDS } from "https://jtathev.github.io/sorry.js";
 
 const NUMBER_OF_GUESSES = 6;
 let guessesRemaining = NUMBER_OF_GUESSES;
 let currentGuess = [];
+
+//JV ADDED 11.5.22
+let guesshistory = [];
+//END
+
 let nextLetter = 0;
 let rightGuessString = WORDS[Math.floor(Math.random() * WORDS.length)]
+let successMsg = SUCCESS_WORDS[Math.floor(Math.random() * SUCCESS_WORDS.length)]
+let sorryMsg = SORRY_WORDS[Math.floor(Math.random() * SORRY_WORDS.length)]
+
 console.log(rightGuessString)
 
 function initBoard() {
@@ -25,6 +35,8 @@ function initBoard() {
 }
 
 initBoard()
+//JV ADDED FOR TESTING  RMEOVE THIS!!!
+document.getElementById("answer").innerHTML = rightGuessString;
 
 document.addEventListener("keyup", (e) => {
 
@@ -75,11 +87,13 @@ function deleteLetter () {
     nextLetter -= 1
 }
 
+//checks each letter of current row
 function checkGuess () {
     let row = document.getElementsByClassName("letter-row")[6 - guessesRemaining]
     let guessString = ''
     let rightGuess = Array.from(rightGuessString)
 
+    //add the latest letter to the current guess
     for (const val of currentGuess) {
         guessString += val
     }
@@ -90,10 +104,15 @@ function checkGuess () {
     }
 
     if (!WORDS.includes(guessString)) {
-        toastr.error("Word not in list!")
+        toastr.error("Word not found in list!")
         return
     }
 
+    //JV ADDED 11.5.22
+    //guess is long enough and in list - add an empty row in guesshistory to be updated below
+    guesshistory.push([0, 0, 0, 0, 0]);
+    
+    //END
     
     for (let i = 0; i < 5; i++) {
         let letterColor = ''
@@ -104,6 +123,10 @@ function checkGuess () {
         // is letter in the correct guess
         if (letterPosition === -1) {
             letterColor = 'grey'
+            
+            //JV ADDED 11.5.22
+            guesshistory[6-guessesRemaining][i]=0;
+            //END
         } else {
             // now, letter is definitely in word
             // if letter index and right guess index are the same
@@ -111,9 +134,15 @@ function checkGuess () {
             if (currentGuess[i] === rightGuess[i]) {
                 // shade green 
                 letterColor = 'green'
+                //JV ADDED 11.5.22
+                guesshistory[6-guessesRemaining][i]=1;
+                //END    
             } else {
                 // shade box yellow
                 letterColor = 'yellow'
+                //JV ADDED 11.5.22
+                guesshistory[6-guessesRemaining][i]=-1;
+                //END                
             }
 
             rightGuess[letterPosition] = "#"
@@ -132,6 +161,17 @@ function checkGuess () {
     if (guessString === rightGuessString) {
         toastr.success("You guessed right! Game over!")
         guessesRemaining = 0
+        document.getElementById('success-panel').style.display = 'block';
+        //let successDiv = document.getElementById('success-panel-text');
+        //successDiv.style.display = 'block';
+  
+        let newcontent = document.createElement('div');
+        newcontent.innerHTML = successMsg;
+
+        while (newcontent.firstChild) {
+            document.getElementById('success-panel-text').appendChild(newcontent.firstChild);
+        }
+        
         return
     } else {
         guessesRemaining -= 1;
@@ -141,6 +181,22 @@ function checkGuess () {
         if (guessesRemaining === 0) {
             toastr.error("You've run out of guesses! Game over!")
             toastr.error(`The right word was: "${rightGuessString}"`)
+            document.getElementById('sorry-panel').style.display = 'block';
+            let sorryDiv = document.getElementById('sorry-panel-text');
+            //sorryDiv.style.display = 'block';
+            //sorryDiv.innerHTML = `Sorry! The right word was: "${rightGuessString}" \n`
+
+            let newcontent1 = document.createElement('div');
+            let newcontent2 = document.createElement('div');
+            newcontent1.innerHTML = `Sorry! The right word was: "${rightGuessString}". \n`
+            newcontent2.innerHTML = sorryMsg;
+
+            while (newcontent1.firstChild) {
+                sorryDiv.appendChild(newcontent1.firstChild);
+            }
+            while (newcontent2.firstChild) {
+                sorryDiv.appendChild(newcontent2.firstChild);
+            }            
         }
     }
 }
@@ -163,13 +219,14 @@ function shadeKeyBoard(letter, color) {
     }
 }
 
+//listen for clicks and convert to the right keystroke
 document.getElementById("keyboard-cont").addEventListener("click", (e) => {
     const target = e.target
     
     if (!target.classList.contains("keyboard-button") && !target.classList.contains("keyboard-button-wide")) {
         return
     } 
-    let key = target.textContent
+    let key = target.textContent 
 
     if (key === "Del") {
         key = "Backspace"
@@ -197,3 +254,48 @@ const animateCSS = (element, animation, prefix = 'animate__') =>
 
     node.addEventListener('animationend', handleAnimationEnd, {once: true});
 });
+
+//JV ADDED 11.5.22 EVERYTHING BELOW
+function convertToEmoji(guess) {
+    var gsquare = String.fromCodePoint(0x1F7E9, 0xFE0F); //green
+    var osquare = String.fromCodePoint(0x1F7E8, 0xFE0F); //yellow
+    var esquare = String.fromCodePoint(0x1F532, 0xFE0F); //empty
+
+    if (guess == 1) {
+        return gsquare;
+    } else if (guess == -1) {
+        return osquare;
+    } else {
+        return esquare;
+    }
+}
+
+function share() {
+    var resultsstring = "";
+    
+    for (let i = 0; i < guesshistory.length; i++) { 
+        for (let j = 0; j < guesshistory[i].length; j++) {
+            resultsstring += convertToEmoji(guesshistory[i][j]);
+            
+        }   resultsstring += "\n"; //add carriage return
+    }
+    copyToClipboard(resultsstring);
+    return(resultsstring);
+}
+
+// Attach the "click" event to share buttons
+document.getElementById("share-button").addEventListener("click", (e) => {
+  share();
+})
+document.getElementById("share-button2").addEventListener("click", (e) => {
+  share();
+})
+
+function copyToClipboard(text) {
+    var dummy = document.createElement("textarea");
+    document.body.appendChild(dummy);
+    dummy.value = text;
+    dummy.select();
+    document.execCommand("copy");
+    document.body.removeChild(dummy);
+}
