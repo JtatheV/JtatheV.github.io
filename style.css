@@ -40,7 +40,6 @@ h1 {
 
 #keyboard-cont div {
   display: flex;
- /* border-style: dashed;*/
 }
 
 .second-row {
@@ -88,4 +87,9 @@ h1 {
 
 .keyboard-button-wide { /* JV added new class for Enter and Del buttons */
   white-space: nowrap; /* JV added to fix mobile wrapping issue*/
-} 
+}
+
+.results-panel {
+    font-size: 3rem; 
+    font-weight: 300;   
+}
