@@ -35,8 +35,6 @@ function initBoard() {
 }
 
 initBoard()
-//JV ADDED FOR TESTING  RMEOVE THIS!!!
-document.getElementById("answer").innerHTML = rightGuessString;
 
 document.addEventListener("keyup", (e) => {
 
