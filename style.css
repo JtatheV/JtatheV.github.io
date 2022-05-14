@@ -47,6 +47,7 @@ h1 {
 
 @media only screen and (max-width: 600px) {
   .keyboard-button, .keyboard-button-wide { 
+    touch-action: manipulation;
     font-size: 1rem;
     font-weight: 700; 
     padding: 0.3rem;
@@ -57,17 +58,20 @@ h1 {
   }  
 
   .keyboard-button {
-    height: 3rem; 
+    height: 5rem; 
     width: 3rem; 
     justify-content: center; 
     align-items: center; 
     text-align: center;
   } 
+  .letter-box {
+    height: 3.5rem; 
+    width: 3.5rem; 
+  }   
 }
 
 @media only screen and (min-width: 601px) {
   .keyboard-button, .keyboard-button-wide { 
-    touch-action: manipulation;
     font-size: 3rem; 
     font-weight: 300; 
     padding: 0.3rem;
@@ -78,15 +82,11 @@ h1 {
   }
 
   .keyboard-button {
-    height: 8rem; 
+    height: 5rem; 
     width: 5rem; 
     justify-content: center; 
     align-items: center; 
-  } 
-  .letter-box {
-    height: 3.5rem; 
-    width: 3.5rem; 
-  }    
+  }  
 }
 
 .keyboard-button-wide { /* new class for Enter and Del buttons */
