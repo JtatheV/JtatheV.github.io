@@ -156,7 +156,7 @@ function checkGuess () {
         toastr.success("You guessed right! Game over!")
         guessesRemaining = 0
         document.getElementById('success-panel').style.display = 'block';
-        document.getElementById('success-panel').style.backgroundColor = '#74c36';
+        document.getElementById('success-panel').style.backgroundColor = '#74c365';
   
         let newcontent = document.createElement('div');
         newcontent.innerHTML = successMsg;
