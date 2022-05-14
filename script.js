@@ -164,7 +164,7 @@ function checkGuess () {
         while (newcontent.firstChild) {
             document.getElementById('success-panel-text').appendChild(newcontent.firstChild);
         }
-        
+        document.getElementById('success-panel').focus();
         return
     } else {
         guessesRemaining -= 1;
@@ -188,7 +188,8 @@ function checkGuess () {
             }
             while (newcontent2.firstChild) {
                 sorryDiv.appendChild(newcontent2.firstChild);
-            }            
+            }  
+            document.getElementById('sorry-panel').focus();
         }
     }
 }
