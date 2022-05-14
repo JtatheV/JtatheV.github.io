@@ -99,12 +99,12 @@ function checkGuess () {
     }
 
     if (guessString.length != 5) {
-        toastr.error("Not enough letters!")
+        toastr.error("Not enough letters!");
         return
     }
 
     if (!WORDS.includes(guessString)) {
-        toastr.error("Word not found in list!")
+        toastr.error("Word not found in list!");
         return
     }
 
@@ -156,6 +156,7 @@ function checkGuess () {
         toastr.success("You guessed right! Game over!")
         guessesRemaining = 0
         document.getElementById('success-panel').style.display = 'block';
+        document.getElementById('success-panel').style.backgroundColor = '#74c36';
   
         let newcontent = document.createElement('div');
         newcontent.innerHTML = successMsg;
@@ -174,6 +175,7 @@ function checkGuess () {
             toastr.error("You've run out of guesses! Game over!")
             toastr.error(`The right word was: "${rightGuessString}"`)
             document.getElementById('sorry-panel').style.display = 'block';
+            document.getElementById('sorry-panel').style.backgroundColor = '#e4717a';
             let sorryDiv = document.getElementById('sorry-panel-text');
 
             let newcontent1 = document.createElement('div');
