@@ -67,6 +67,7 @@ h1 {
 
 @media only screen and (min-width: 601px) {
   .keyboard-button, .keyboard-button-wide { 
+    touch-action: manipulation;
     font-size: 3rem; 
     font-weight: 300; 
     padding: 0.3rem;
@@ -77,11 +78,15 @@ h1 {
   }
 
   .keyboard-button {
-    height: 5rem; 
+    height: 8rem; 
     width: 5rem; 
     justify-content: center; 
     align-items: center; 
   } 
+  .letter-box {
+    height: 3.5rem; 
+    width: 3.5rem; 
+  }    
 }
 
 .keyboard-button-wide { /* new class for Enter and Del buttons */
