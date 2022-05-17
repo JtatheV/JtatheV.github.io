@@ -150,6 +150,10 @@ svg {
   cursor: pointer;
 }
 
+.share-button {
+    color: black;
+}
+
 .close-button {
   background-color: transparent;
   border: none;
