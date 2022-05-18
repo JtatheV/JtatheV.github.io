@@ -169,7 +169,7 @@ function checkGuess () {
         }
         
         //Color and show the results panel
-        document.getElementById('results-panel').style.backgroundColor = '#AFE1AF';
+        document.getElementById('results-panel').style.borderColor = '#428551';
         document.getElementById('results-panel').classList.add('is-open');
         
         //set the final results string - append message below to emojis
@@ -214,7 +214,7 @@ function checkGuess () {
             }
 
             //color and Show the results panel
-            document.getElementById('results-panel').style.backgroundColor = '#f08080';
+            document.getElementById('results-panel').style.borderColor = '#6e0707';
             document.getElementById('results-panel').classList.add('is-open');
 
             //set the final results string - append message below to emojis
