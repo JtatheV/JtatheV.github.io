@@ -8,13 +8,16 @@ let currentGuess = [];
 let guesshistory = [];
 
 let nextLetter = 0;
-let rightGuessString = WORDS[Math.floor(Math.random() * WORDS.length)]
-let successMsg = SUCCESS_WORDS[Math.floor(Math.random() * SUCCESS_WORDS.length)]
-let sorryMsg = SORRY_WORDS[Math.floor(Math.random() * SORRY_WORDS.length)]
+let dateNowLocal = new Date();
+let todayUTC = new Date( Date.UTC(dateNowLocal.getUTCFullYear(), dateNowLocal.getUTCMonth(), dateNowLocal.getUTCDate(), 0, 0, 0));
+let rightGuessString = WORDS[getIndexFromDate(todayUTC)];
+let successMsg = SUCCESS_WORDS[Math.floor(Math.random() * SUCCESS_WORDS.length)];
+let sorryMsg = SORRY_WORDS[Math.floor(Math.random() * SORRY_WORDS.length)];
 let resultsstring = "";
 let resultsstringTweet = "";
 
 console.log(rightGuessString)
+console.log(getIndexFromDate(todayUTC))
 
 function initBoard() {
     let board = document.getElementById("game-board");
@@ -34,7 +37,6 @@ function initBoard() {
 }
 
 initBoard();
-//toastr.options.positionClass = 'toast-center-center';
 toastr.options.positionClass = 'toast-top-center';
 
 document.addEventListener("keyup", (e) => {
@@ -361,3 +363,10 @@ copyButton.addEventListener('click', event => {
     copyToClipboard(resultsstring);
     toastr.success("Your results are copied to clipboard and ready to share!"); 
 });
+
+function getIndexFromDate(dateIn) {
+    let len = WORDS.length;
+    let index = ( dateIn.getTime()  / 86400000 ) - 19130; //19130 is days since 1/1/1970 on Dundle day 1! 86400000 is ms in 24h
+    let adjIndex = (index>=len) ? index-(len*(Math.floor(index/len))) : index; 
+    return adjIndex
+}
