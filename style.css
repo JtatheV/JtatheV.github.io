@@ -218,3 +218,9 @@ header {
 .copy-link:hover {
     background-color: #E8E8E8;
 }
+
+.center-button {
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
