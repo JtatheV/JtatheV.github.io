@@ -192,11 +192,11 @@ svg {
     color: darkslategray;
 }
 
-header {
+/*header {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
-}
+}*/
 
 .link {
     display: flex;
@@ -220,8 +220,8 @@ header {
     background-color: #E8E8E8;
 }
 
-/*.center-button {
+.center-button {
     display: flex; 
     justify-content: center; 
     align-items: center;
-}*/
+}
