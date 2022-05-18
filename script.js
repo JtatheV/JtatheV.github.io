@@ -338,7 +338,6 @@ shareButton.addEventListener('click', event => {
         isMobile = true;
     }
     //attempt native device share if mobile detected
-    /*
     if (navigator.share && isMobile) { 
     navigator.share({
         title: 'I just played Dundle - a daily word game for DnD geeks', //email: subject
@@ -350,9 +349,8 @@ shareButton.addEventListener('click', event => {
     .catch(console.error);
     } else {
         sharePanel.classList.add('is-open');
-    }*/sharePanel.classList.add('is-open');
-    sharePanel.focus();
-    
+        sharePanel.focus();
+    }    
 });
 
 closeButton.addEventListener('click', event => {
