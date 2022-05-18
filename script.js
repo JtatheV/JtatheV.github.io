@@ -351,6 +351,7 @@ shareButton.addEventListener('click', event => {
     } else {
         sharePanel.classList.add('is-open');
     }*/sharePanel.classList.add('is-open');
+    sharePanel.focus();
     
 });
 
