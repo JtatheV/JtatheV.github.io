@@ -3,7 +3,7 @@ h1 {
 }
 
 p {
-    font-size: 2.5rem;
+    font-size: 1.7rem;
 }
 
 #game-board {
@@ -192,11 +192,11 @@ svg {
     color: darkslategray;
 }
 
-/*header {
+.share-popout-header {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
-}*/
+}
 
 .link {
     display: flex;
