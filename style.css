@@ -88,6 +88,17 @@ p {
     .targets {
         grid-template-columns: 1fr;
     }
+    .link {
+        display: grid;
+        grid-template-rows: 1fr; 
+        grid-template-columns: 1fr;
+        grid-gap: 20px; 
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        border-radius: 4px;
+        background-color: #F8F8F8;
+    }
 }
 
 @media only screen and (min-width: 601px) {
@@ -109,6 +120,14 @@ p {
     }  
     .targets {
         grid-template-columns: 1fr 1fr;
+    }
+    .link {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        border-radius: 4px;
+        background-color: #F8F8F8;
     }
 }
 
@@ -202,15 +221,6 @@ svg {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
-}
-
-.link {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    border-radius: 4px;
-    background-color: #F8F8F8;
 }
 
 .share-button, .copy-link {
