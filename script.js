@@ -17,7 +17,6 @@ let resultsstring = "";
 let resultsstringTweet = "";
 
 console.log(rightGuessString)
-console.log(getIndexFromDate(todayUTC))
 
 function initBoard() {
     let board = document.getElementById("game-board");
@@ -92,9 +91,10 @@ function deleteLetter () {
 function checkGuess () {
     let row = document.getElementsByClassName("letter-row")[6 - guessesRemaining]
     let guessString = ''
-    let rightGuess = Array.from(rightGuessString)
-
-    //add the latest letter to the current guess
+    let rightGuess = Array.from(rightGuessString)  
+    let currentGuessTracker = [...currentGuess] //copy of guess to manipulate to assist tracking during multi-same letter checking
+    
+    //create a string value from the currentGuess letter array
     for (const val of currentGuess) {
         guessString += val
     }
@@ -111,20 +111,23 @@ function checkGuess () {
 
     //guess is long enough and in list - add an empty row in guesshistory to be updated below
     guesshistory.push([0, 0, 0, 0, 0]);
-    
-    
+
     for (let i = 0; i < 5; i++) {
         let letterColor = ''
         let box = row.children[i]
         let letter = currentGuess[i]
         
         let letterPosition = rightGuess.indexOf(currentGuess[i])
+        
+        //method to count occurances of a value within an array
+        const countOccurrences = (arr, val) => arr.reduce((a, v) => (v === val ? a + 1 : a), 0);
+        let clearRightGuessLetter = true;
+        
         // is letter in the correct guess
         if (letterPosition === -1) {
             letterColor = 'grey'
             
             guesshistory[6-guessesRemaining][i]=0;
-
         } else {
             // now, letter is definitely in word
             // if letter index and right guess index are the same
@@ -136,10 +139,24 @@ function checkGuess () {
             } else {
                 // shade box yellow
                 letterColor = 'yellow'
-                guesshistory[6-guessesRemaining][i]=-1;             
+                guesshistory[6-guessesRemaining][i]=-1;   
+                
+                //if there is another of the same letter to come AND there are more of same letter remaining to the right than in the total in correct answer, then set this one to grey
+                if(countOccurrences(Array.from(rightGuessString), currentGuess[i] ) < countOccurrences(currentGuessTracker, currentGuess[i] ) && currentGuess.lastIndexOf(currentGuess[i])>i){ 
+                    //blank out the repeating letter so not double counted next iteration in if condition above
+                    currentGuessTracker[i] = "#"   
+                    letterColor = 'grey'
+                    clearRightGuessLetter = false;
+                }
+               
             }
-
-            rightGuess[letterPosition] = "#"
+            
+            //blank out the correct letter from right guess (unless suppressed from above) so no checked for again
+            if(clearRightGuessLetter){
+                rightGuess[letterPosition] = "#"
+                clearRightGuessLetter = true;
+            }   
+            
         }
 
         let delay = 250 * i
