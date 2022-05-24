@@ -172,6 +172,10 @@ p {
     outline: none;
 }
 
+.hidden {
+    display: none;
+}
+
 .is-open {
     display: block;
     z-index: 2;
@@ -221,10 +225,6 @@ svg {
 .text-display {
     margin-right: 15px;
     white-space:pre-wrap;
-}
-
-.hidden {
-    display: none;
 }
 
 .share-popout-header {

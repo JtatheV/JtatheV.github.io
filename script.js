@@ -1,4 +1,4 @@
-import { WORDS } from "https://jtathev.github.io/words.js";
+import { WORDS } from "/words.js";
 import { SUCCESS_WORDS } from "https://jtathev.github.io/success.js";
 import { SORRY_WORDS } from "https://jtathev.github.io/sorry.js";
 
@@ -10,11 +10,14 @@ let guesshistory = [];
 let nextLetter = 0;
 let dateNowLocal = new Date();
 let todayUTC = new Date( Date.UTC(dateNowLocal.getUTCFullYear(), dateNowLocal.getUTCMonth(), dateNowLocal.getUTCDate(), 0, 0, 0));
-let rightGuessString = WORDS[getIndexFromDate(todayUTC)];
+let indexToday = getIndexFromDate(todayUTC);
+let rightGuessString = WORDS[indexToday][0];
 let successMsg = SUCCESS_WORDS[Math.floor(Math.random() * SUCCESS_WORDS.length)];
 let sorryMsg = SORRY_WORDS[Math.floor(Math.random() * SORRY_WORDS.length)];
 let resultsstring = "";
 let resultsstringTweet = "";
+
+const hint = WORDS[indexToday][1];  // '\\?:-,!\'';
 
 console.log(rightGuessString)
 
@@ -103,8 +106,14 @@ function checkGuess () {
         toastr.error("Not enough letters!");
         return
     }
+    
+    //check if word is in the list
+    let exists;
+    WORDS.forEach(x => {
+      if (x.includes(guessString)) exists = true; 
+    });
 
-    if (!WORDS.includes(guessString)) {
+    if (!exists) {
         toastr.error("Word not found in list!");
         return
     }
@@ -167,6 +176,7 @@ function checkGuess () {
             box.style.backgroundColor = letterColor
             shadeKeyBoard(letter, letterColor)
         }, delay)
+
     }
 
     if (guessString === rightGuessString) {
@@ -250,7 +260,30 @@ function checkGuess () {
             
         }
     }
+    //show hint button if on last guess
+    console.log(guessesRemaining)
+    if(guessesRemaining===4 && hint!=''){ 
+        let hintButton = document.getElementById('hint-area');
+        hintButton.classList.remove('hidden');
+        hintButton.classList.add('is-open'); 
+        console.log('in if + guesses remaining: ' + guessesRemaining + hintButton.classList)}
 }
+
+const hintButton = document.getElementById('hint-button');
+hintButton.addEventListener('click', event => {
+    let hintPanel = document.getElementById('hint');
+    hintPanel.classList.remove('hidden');
+    hintPanel.classList.add('is-open');     
+    
+    //add hint 
+    let newcontent1 = document.createElement('div');
+    newcontent1.innerHTML = hint;           
+    while (newcontent1.firstChild) {
+        hintPanel.appendChild(newcontent1.firstChild);
+    }
+    //disable button
+    hintButton.disabled = true;
+});
 
 function shadeKeyBoard(letter, color) {
     for (const elem of document.getElementsByClassName("keyboard-button")) {
@@ -382,7 +415,7 @@ copyButton.addEventListener('click', event => {
 });
 
 function getIndexFromDate(dateIn) {
-    let len = WORDS.length;
+    let len = WORDS[0].length;
     let index = ( dateIn.getTime()  / 86400000 ) - 19130; //19130 is days since 1/1/1970 on Dundle day 1! 86400000 is ms in 24h
     let adjIndex = (index>=len) ? index-(len*(Math.floor(index/len))) : index; 
     return adjIndex
