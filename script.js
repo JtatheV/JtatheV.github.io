@@ -19,6 +19,7 @@ let resultsstringTweet = "";
 let hintAdded = false;
 
 const hint = WORDS[indexToday][1];  // '\\?:-,!\'';
+const answerDescr = WORDS[indexToday][3];
 
 console.log(rightGuessString)
 
@@ -186,18 +187,26 @@ function checkGuess () {
 
         //add success message to results panel
         let newcontent1 = document.createElement('div');
-        newcontent1.innerHTML = successMsg;           
+        newcontent1.innerHTML = successMsg;  
+        let newcontent4 = document.createElement('div');
+        newcontent4.innerHTML = answerDescr;   
         while (newcontent1.firstChild) {
             document.getElementById('results-panel-text').appendChild(newcontent1.firstChild);
         }
+        let resPanelDescr = document.getElementById('results-panel-descr');
+        while (newcontent4.firstChild) {
+            resPanelDescr.appendChild(newcontent4.firstChild);
+            resPanelDescr.style.fontStyle = "italic";
+            resPanelDescr.style.color = "#428551";            
+        }           
 
         //add the emoji grid to the copy paste box
         let newcontent2 = document.createElement('div');
-        newcontent2.innerHTML = getResultString();          
+        newcontent2.innerHTML = getResultString();  
         while (newcontent2.firstChild) {
             document.getElementById('text-display').appendChild(newcontent2.firstChild);
         }
-        
+     
         //Color and show the results panel
         document.getElementById('results-panel').style.borderColor = '#428551';
         document.getElementById('results-panel').classList.add('is-open');
@@ -226,16 +235,24 @@ function checkGuess () {
             let resultsDiv = document.getElementById('results-panel-text');
             let newcontent1 = document.createElement('div');
             let newcontent2 = document.createElement('div');
+            let newcontent4 = document.createElement('div');
             newcontent1.innerHTML = `Sorry! The right word was: <i><b>"${rightGuessString}"</b></i>. \n`
-            newcontent2.innerHTML = sorryMsg;
+            newcontent2.innerHTML = '\n' + sorryMsg;
+            newcontent4.innerHTML = answerDescr + ". ";
 
             while (newcontent1.firstChild) {
                 resultsDiv.appendChild(newcontent1.firstChild);
-            }
+            }           
             while (newcontent2.firstChild) {
                 resultsDiv.appendChild(newcontent2.firstChild);
             }
-
+            let resPanelDescr = document.getElementById('results-panel-descr');
+            while (newcontent4.firstChild) {
+                resPanelDescr.appendChild(newcontent4.firstChild);
+                resPanelDescr.style.fontStyle = "italic";
+                resPanelDescr.style.color = "#6e0707";
+            }  
+            
             //add the emoji grid to the copy paste box
             let newcontent3 = document.createElement('div');
             newcontent3.innerHTML = getResultString();       
