@@ -272,9 +272,6 @@ function checkGuess () {
 const hintButton = document.getElementById('hint-button');
 hintButton.addEventListener('click', event => {
     let hintPanel = document.getElementById('hint-popout');
-    hintPanel.classList.remove('hidden');
-    hintPanel.classList.add('is-open');
-    console.log('innertext len = '+hintPanel.innerText)
     //add hint if blank
     if(hintPanel.innerText.length===23){ //23 = length of heading
         console.log('in if innertext = '+hintPanel.innerText)
@@ -284,7 +281,9 @@ hintButton.addEventListener('click', event => {
             hintPanel.appendChild(newcontent1.firstChild);
         }
         hintPanel.focus();
-    }    
+    }
+    hintPanel.classList.remove('hidden');
+    hintPanel.classList.add('is-open');    
 });
 
 //close hint
