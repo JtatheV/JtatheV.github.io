@@ -295,7 +295,7 @@ svg {
     }
 }
 
-@media only screen and (max-width: 600px) and (prefers-reduced-motion: no-preference) { //no rainbow on mobile
+@media only screen and (max-width: 600px) and (prefers-reduced-motion: no-preference) { 
     .wobbling-rainbow {
         animation: wobble-grow 3s 2s; 
     }
