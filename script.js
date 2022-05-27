@@ -1,4 +1,4 @@
-import { WORDS } from "/words.js";
+import { WORDS } from "https://jtathev.github.io/words.js";
 import { SUCCESS_WORDS } from "https://jtathev.github.io/success.js";
 import { SORRY_WORDS } from "https://jtathev.github.io/sorry.js";
 
@@ -262,27 +262,37 @@ function checkGuess () {
     }
     //show hint button if on last guess
     console.log(guessesRemaining)
-    if(guessesRemaining===4 && hint!=''){ 
+    if(guessesRemaining===5 && hint!=''){ 
         let hintButton = document.getElementById('hint-area');
         hintButton.classList.remove('hidden');
         hintButton.classList.add('is-open'); 
+        hintButton.classList.add('spin-and-grow');
         console.log('in if + guesses remaining: ' + guessesRemaining + hintButton.classList)}
 }
 
 const hintButton = document.getElementById('hint-button');
 hintButton.addEventListener('click', event => {
-    let hintPanel = document.getElementById('hint');
+    let hintPanel = document.getElementById('hint-popout');
     hintPanel.classList.remove('hidden');
     hintPanel.classList.add('is-open');     
-    
-    //add hint 
-    let newcontent1 = document.createElement('div');
-    newcontent1.innerHTML = hint;           
-    while (newcontent1.firstChild) {
-        hintPanel.appendChild(newcontent1.firstChild);
+    console.log('innertext len = '+hintPanel.innerText)
+    //add hint if blank 23
+    if(hintPanel.innerText.length===23){ //23 = length of heading
+        console.log('in if innertext = '+hintPanel.innerText)
+        let newcontent1 = document.createElement('div');
+        newcontent1.innerHTML = hint;           
+        while (newcontent1.firstChild) {
+            hintPanel.appendChild(newcontent1.firstChild);
+        }
+        //disable button
+        //hintButton.disabled = true;
     }
-    //disable button
-    hintButton.disabled = true;
+});
+
+//close hint
+const closeButton2 = document.getElementById('close-button2');
+closeButton2.addEventListener('click', event => {
+    document.getElementById('hint-popout').classList.remove('is-open');
 });
 
 function shadeKeyBoard(letter, color) {
