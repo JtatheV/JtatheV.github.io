@@ -262,11 +262,11 @@ function checkGuess () {
     }
     //show hint button if on last guess
     if(guessesRemaining===1 && hint!=''){ 
+        document.getElementById('hint-button').classList.add("wobbling-rainbow"); 
         let hintButton = document.getElementById('hint-area');
         hintButton.classList.remove('hidden');
         hintButton.classList.add('is-open'); 
-        hintButton.classList.add('spin-and-grow');
-        console.log('in if + guesses remaining: ' + guessesRemaining + hintButton.classList)}
+    }
 }
 
 const hintButton = document.getElementById('hint-button');
@@ -275,7 +275,7 @@ hintButton.addEventListener('click', event => {
     hintPanel.classList.remove('hidden');
     hintPanel.classList.add('is-open');     
     console.log('innertext len = '+hintPanel.innerText)
-    //add hint if blank 23
+    //add hint if blank
     if(hintPanel.innerText.length===23){ //23 = length of heading
         console.log('in if innertext = '+hintPanel.innerText)
         let newcontent1 = document.createElement('div');
@@ -283,8 +283,6 @@ hintButton.addEventListener('click', event => {
         while (newcontent1.firstChild) {
             hintPanel.appendChild(newcontent1.firstChild);
         }
-        //disable button
-        //hintButton.disabled = true;
     }
 });
 

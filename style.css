@@ -252,14 +252,44 @@ svg {
     align-items: center;
 }
 
-@keyframes spin-and-grow {
+@keyframes wobble-grow {
   0% {
-    transform: scale(1) rotateZ(0);
+    transform: rotate(0);
   }
-  50% {
-    transform: scale(2) rotateZ(180deg);
+  20% {
+    transform: rotate(10deg);
+  }
+  40% {
+    transform: rotate(-10deg);
+  }   
+  60% {
+    transform: scale(1.5) rotate(10deg);
+  }
+  80% {
+    transform: rotate(-10deg);
   }
   100% {
-    transform: scale(1) rotateZ(360deg);
+    transform: rotate(0);
   }
+}
+
+@keyframes rainbow_animation {
+    0%,100% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 100% 0;
+    }
+}
+
+@media only screen and (prefers-reduced-motion: no-preference) { 
+    .wobbling-rainbow {
+        animation: rainbow_animation 6s ease-in-out infinite, wobble-grow 3s 2s;
+        background: linear-gradient(to right, #6666ff, #0099ff , #00ff00, #ff3399, #6666ff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        background-size: 400% 100%;            
+    }
 }
