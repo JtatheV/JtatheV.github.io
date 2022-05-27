@@ -16,6 +16,7 @@ let successMsg = SUCCESS_WORDS[Math.floor(Math.random() * SUCCESS_WORDS.length)]
 let sorryMsg = SORRY_WORDS[Math.floor(Math.random() * SORRY_WORDS.length)];
 let resultsstring = "";
 let resultsstringTweet = "";
+let hintAdded = false;
 
 const hint = WORDS[indexToday][1];  // '\\?:-,!\'';
 
@@ -261,7 +262,7 @@ function checkGuess () {
         }
     }
     //show hint button if on last guess
-    if(guessesRemaining===1 && hint!=''){ 
+    if(guessesRemaining===5 && hint!=''){ 
         document.getElementById('hint-button').classList.add("wobbling-rainbow"); 
         let hintButton = document.getElementById('hint-area');
         hintButton.classList.remove('hidden');
@@ -272,18 +273,19 @@ function checkGuess () {
 const hintButton = document.getElementById('hint-button');
 hintButton.addEventListener('click', event => {
     let hintPanel = document.getElementById('hint-popout');
-    //add hint if blank
-    if(hintPanel.innerText.length===23){ //23 = length of heading
-        console.log('in if innertext = '+hintPanel.innerText)
+    hintPanel.classList.remove('hidden');
+    hintPanel.classList.add('is-open'); 
+
+    //add hint if not already
+    if(!hintAdded){ 
         let newcontent1 = document.createElement('div');
         newcontent1.innerHTML = hint;           
         while (newcontent1.firstChild) {
             hintPanel.appendChild(newcontent1.firstChild);
+            hintAdded = true;
         }
-        hintPanel.focus();
     }
-    hintPanel.classList.remove('hidden');
-    hintPanel.classList.add('is-open');    
+    hintPanel.focus();
 });
 
 //close hint
