@@ -262,7 +262,7 @@ function checkGuess () {
         }
     }
     //show hint button if on last guess
-    if(guessesRemaining===5 && hint!=''){ 
+    if(guessesRemaining===1 && hint!=''){ 
         document.getElementById('hint-button').classList.add("wobbling-rainbow"); 
         let hintButton = document.getElementById('hint-area');
         hintButton.classList.remove('hidden');
