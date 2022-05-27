@@ -261,8 +261,7 @@ function checkGuess () {
         }
     }
     //show hint button if on last guess
-    console.log(guessesRemaining)
-    if(guessesRemaining===5 && hint!=''){ 
+    if(guessesRemaining===1 && hint!=''){ 
         let hintButton = document.getElementById('hint-area');
         hintButton.classList.remove('hidden');
         hintButton.classList.add('is-open'); 
