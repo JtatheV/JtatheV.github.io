@@ -273,7 +273,7 @@ const hintButton = document.getElementById('hint-button');
 hintButton.addEventListener('click', event => {
     let hintPanel = document.getElementById('hint-popout');
     hintPanel.classList.remove('hidden');
-    hintPanel.classList.add('is-open');     
+    hintPanel.classList.add('is-open');
     console.log('innertext len = '+hintPanel.innerText)
     //add hint if blank
     if(hintPanel.innerText.length===23){ //23 = length of heading
@@ -283,7 +283,8 @@ hintButton.addEventListener('click', event => {
         while (newcontent1.firstChild) {
             hintPanel.appendChild(newcontent1.firstChild);
         }
-    }
+        hintPanel.focus();
+    }    
 });
 
 //close hint
@@ -346,7 +347,6 @@ const animateCSS = (element, animation, prefix = 'animate__') =>
     node.addEventListener('animationend', handleAnimationEnd, {once: true});
 });
 
-//JV ADDED 11.5.22 EVERYTHING BELOW
 function convertToEmoji(guess) {
     var gsquare = String.fromCodePoint(0x1F7E9, 0xFE0F); //green
     var osquare = String.fromCodePoint(0x1F7E8, 0xFE0F); //yellow
