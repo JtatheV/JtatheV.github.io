@@ -166,6 +166,7 @@ p {
     padding: 2rem;
     border: 3px solid black;
     border-radius: 8px;
+    margin-top: 2rem;
 }
 
 .results-panel:focus{
@@ -283,7 +284,7 @@ svg {
     }
 }
 
-@media only screen and (prefers-reduced-motion: no-preference) { 
+@media only screen and (min-width: 601px) and (prefers-reduced-motion: no-preference) { 
     .wobbling-rainbow {
         animation: rainbow_animation 6s ease-in-out infinite, wobble-grow 3s 2s;
         background: linear-gradient(to right, #6666ff, #0099ff , #00ff00, #ff3399, #6666ff);
@@ -291,5 +292,11 @@ svg {
         background-clip: text;
         color: transparent;
         background-size: 400% 100%;            
+    }
+}
+
+@media only screen and (max-width: 600px) and (prefers-reduced-motion: no-preference) { //no rainbow on mobile
+    .wobbling-rainbow {
+        animation: wobble-grow 3s 2s; 
     }
 }
