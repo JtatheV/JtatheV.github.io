@@ -3,7 +3,7 @@ export const WORDS = [
 ['comet','_ tail eagle','','Comet tail eagles are Elemental birds with a fiery aura, first published in Dungeon Magazine 169, page 33','',''],
 ['shard','making piece while reading the Crystal','','The Crystal Shard is a 1988 novel by R. A. Salvatore and the first book in The Icewind Dale Trilogy featuring protagonist Drizzt Do\'Urden','',''],
 ['viper','ssssssssss','','The Deathrattle Viper featured in 4E as a level 5 Brute','',''],
-['mimic','dont open that... oh.','','An old classic - a shapeshifting predator that tales the form of a door or chest','',''],
+['mimic','dont open that... oh.','','An old classic - a shapeshifting predator that takes the form of a door or chest','',''],
 ['souls','Barovia only has a limited supply of these','','In Curse of Strahd, there are not enough souls to go around and so many Barovians have no soul and are empty vessels going through the motions','',''],
 ['boars','One for the spit','','Wild cousins of the domestic pig, with a range of types in DnD including Dire and Thunderfury','',''],
 ['otter','Water badger','','The humble Otter featured in the 1E monster manual','',''],

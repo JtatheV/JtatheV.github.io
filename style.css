@@ -300,3 +300,10 @@ svg {
         animation: wobble-grow 3s 2s; 
     }
 }
+
+.results-panel-descr {
+    text-align: center;
+    font-style: italic;
+    background-color: #dcdcdc;
+    padding: 10px;
+}

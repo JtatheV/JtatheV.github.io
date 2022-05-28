@@ -196,9 +196,8 @@ function checkGuess () {
         let resPanelDescr = document.getElementById('results-panel-descr');
         while (newcontent4.firstChild) {
             resPanelDescr.appendChild(newcontent4.firstChild);
-            resPanelDescr.style.fontStyle = "italic";
+            resPanelDescr.classList.add('results-panel-descr');
             resPanelDescr.style.color = "#428551";   
-            resPanelDescr.style.backgroundColor = '#dcdcdc';
         }           
 
         //add the emoji grid to the copy paste box
@@ -250,9 +249,8 @@ function checkGuess () {
             let resPanelDescr = document.getElementById('results-panel-descr');
             while (newcontent4.firstChild) {
                 resPanelDescr.appendChild(newcontent4.firstChild);
-                resPanelDescr.style.fontStyle = "italic";
-                resPanelDescr.style.color = "#6e0707";
-                resPanelDescr.style.backgroundColor = '#dcdcdc';
+                resPanelDescr.classList.add('results-panel-descr');
+                resPanelDescr.style.color = "#6e0707";   
             }  
             
             //add the emoji grid to the copy paste box
