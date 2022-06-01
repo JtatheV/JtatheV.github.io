@@ -81,7 +81,7 @@ p {
 @media only screen and (max-width: 600px) {
     .keyboard-button, .keyboard-button-wide { 
         touch-action: manipulation; /* disable doubletap */
-        font-size: 1.1rem;
+        font-size: 1.2rem;
         font-weight: bold; 
         padding: 0;
         margin: 0 0;
