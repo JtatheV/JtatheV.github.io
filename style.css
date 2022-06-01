@@ -81,14 +81,13 @@ p {
 @media only screen and (max-width: 600px) {
     .keyboard-button, .keyboard-button-wide { 
         touch-action: manipulation; /* disable doubletap */
-        font-size: 1.2rem;
+        font-size: 1.4rem;
         font-weight: 700; 
-        padding: 0.2rem;
+        padding: 0;
         margin: 0 0;
         cursor: pointer;
         text-transform: uppercase;
         color:black; /* added to fix mobile color issue */
-        text-align: center;
     }  
 
     .keyboard-button {
@@ -112,7 +111,7 @@ p {
         grid-gap: 20px; 
         justify-content: center;
         align-items: center;
-        padding: 10px;
+        padding: 0px;
         border-radius: 4px;
         background-color: #F8F8F8;
     }
