@@ -21,27 +21,54 @@ let hintAdded = false;
 const hint = WORDS[indexToday][1];  // '\\?:-,!\'';
 const answerDescr = WORDS[indexToday][3];
 
+//Params to store/retrieve local save data
+var LAST_SAVE_POINT = 'LastSavePoint';
+var LAST_RIGHT_GUESS = 'LastRightGuess'
+var currentAnswerArray = [];
+
+var isSavedData = false;
+var localAnswerArray = JSON.parse(localStorage.getItem(LAST_SAVE_POINT));
+var localRightGuessString = JSON.parse(localStorage.getItem(LAST_RIGHT_GUESS));
+
+if(localAnswerArray != 'undefined' && localAnswerArray != null && localAnswerArray.length > 0 && localRightGuessString.toUpperCase() === rightGuessString.toUpperCase()) {
+    isSavedData = true;
+}
 console.log(rightGuessString)
 
-function initBoard() {
+
+function initBoard(){ 
     let board = document.getElementById("game-board");
 
     for (let i = 0; i < NUMBER_OF_GUESSES; i++) {
         let row = document.createElement("div")
-        row.className = "letter-row"
-        
+        row.className = "letter-row"       
         for (let j = 0; j < 5; j++) {
             let box = document.createElement("div")
             box.className = "letter-box"
             row.appendChild(box)
         }
-
         board.appendChild(row)
     }
 }
 
 initBoard();
 toastr.options.positionClass = 'toast-top-center';
+
+if(isSavedData){
+    for (let i = 0; i < localAnswerArray.length; i++) {
+        for (let j = 0; j < 5; j++){
+            let letter1 = String(localAnswerArray[i][j]).toLowerCase();
+            currentGuess[j] = letter1;       
+            insertLetter(letter1);
+        }
+        checkGuess();
+    }isSavedData = false;
+}
+
+function save(saveArray,rightGuess) {
+    localStorage.setItem(LAST_SAVE_POINT, JSON.stringify(saveArray));
+    localStorage.setItem(LAST_RIGHT_GUESS, JSON.stringify(rightGuess));
+}
 
 document.addEventListener("keyup", (e) => {
 
@@ -56,7 +83,7 @@ document.addEventListener("keyup", (e) => {
     }
 
     if (pressedKey === "Enter") {
-        checkGuess()
+        checkGuess(isSavedData)
         return
     }
 
@@ -76,10 +103,10 @@ function insertLetter (pressedKey) {
 
     let row = document.getElementsByClassName("letter-row")[6 - guessesRemaining]
     let box = row.children[nextLetter]
-    animateCSS(box, "pulse")
+    if(!isSavedData){animateCSS(box, "pulse")}    
     box.textContent = pressedKey
     box.classList.add("filled-box")
-    currentGuess.push(pressedKey)
+    if(!isSavedData){currentGuess.push(pressedKey)}
     nextLetter += 1
 }
 
@@ -93,7 +120,7 @@ function deleteLetter () {
 }
 
 //checks each letter of current row
-function checkGuess () {
+function checkGuess () {//isSaved) {
     let row = document.getElementsByClassName("letter-row")[6 - guessesRemaining]
     let guessString = ''
     let rightGuess = Array.from(rightGuessString)  
@@ -122,12 +149,13 @@ function checkGuess () {
 
     //guess is long enough and in list - add an empty row in guesshistory to be updated below
     guesshistory.push([0, 0, 0, 0, 0]);
-
+    currentAnswerArray.push(["","","","",""]);
+    
     for (let i = 0; i < 5; i++) {
         let letterColor = ''
         let box = row.children[i]
         let letter = currentGuess[i]
-        
+        currentAnswerArray[6-guessesRemaining][i] = letter;
         let letterPosition = rightGuess.indexOf(currentGuess[i])
         
         //method to count occurances of a value within an array
@@ -137,7 +165,6 @@ function checkGuess () {
         // is letter in the correct guess
         if (letterPosition === -1) {
             letterColor = 'grey'
-            
             guesshistory[6-guessesRemaining][i]=0;
         } else {
             // now, letter is definitely in word
@@ -161,7 +188,7 @@ function checkGuess () {
                 }
                
             }
-            
+
             //blank out the correct letter from right guess (unless suppressed from above) so no checked for again
             if(clearRightGuessLetter){
                 rightGuess[letterPosition] = "#"
@@ -178,7 +205,8 @@ function checkGuess () {
             box.style.backgroundColor = letterColor
             shadeKeyBoard(letter, letterColor)
         }, delay)
-
+        
+        save(currentAnswerArray,rightGuessString);
     }
 
     if (guessString === rightGuessString) {
