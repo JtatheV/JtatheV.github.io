@@ -244,7 +244,7 @@ function checkGuess () {//isSaved) {
         resultsstring += "HUZZAH! I just solved today\'s Dundle in " + guesshistory.length + guessStr + "!  Can you do better?"
         
         //set the Twitter URL 
-        document.getElementById("twitter-button").href="https://twitter.com/intent/tweet?url=https://crithitbrit.ghost.io/dundle&text=" + resultsstringTweet + "%0AHUZZAH!%20I%20just%20solved%20today%27s%20Dundle%20in%20" + guesshistory.length + guessStr + "%21%20%20Can%20you%20do%20better%3F%0A"; 
+        document.getElementById("twitter-button").href="https://twitter.com/intent/tweet?url=https://www.crithitbrit.com/dundle&text=" + resultsstringTweet + "%0AHUZZAH!%20I%20just%20solved%20today%27s%20Dundle%20in%20" + guesshistory.length + guessStr + "%21%20%20Can%20you%20do%20better%3F%0A"; 
 
         setTimeout(function() {
              document.getElementById('results-panel').focus();
@@ -297,7 +297,7 @@ function checkGuess () {//isSaved) {
             resultsstring += "\nUh oh! I was beaten by today\'s Dundle!  Will you fare better?"
 
             //set the Twitter URL 
-            document.getElementById("twitter-button").href="https://twitter.com/intent/tweet?url=https://crithitbrit.ghost.io/dundle&text=" + resultsstringTweet + 
+            document.getElementById("twitter-button").href="https://twitter.com/intent/tweet?url=https://www.crithitbrit.com/dundle&text=" + resultsstringTweet + 
             "%0AUh%20oh%21%20I%20was%20beaten%20by%20today%27s%20Dundle%21%20%20Will%20you%20fare%20better%3F%0A";
             
             setTimeout(function() {
