@@ -468,7 +468,7 @@ copyButton.addEventListener('click', event => {
 });
 
 function getIndexFromDate(dateIn) {
-    let len = WORDS[0].length;
+    let len = WORDS.length;
     let index = ( dateIn.getTime()  / 86400000 ) - 19130; //19130 is days since 1/1/1970 on Dundle day 1! 86400000 is ms in 24h
     let adjIndex = (index>=len) ? index-(len*(Math.floor(index/len))) : index; 
     return adjIndex
