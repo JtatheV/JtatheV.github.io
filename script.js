@@ -446,7 +446,7 @@ shareButton.addEventListener('click', event => {
     if (navigator.share && isMobile) { 
     navigator.share({
         title: 'I just played Dundle - a daily word game for DnD geeks', //email: subject
-        url: 'https://crithitbrit.ghost.io/dundle', //email: body
+        url: 'https://www.crithitbrit.com/dundle', //email: body
         text: resultsstring //email: body
     }).then(() => {
         console.log('Thanks for sharing!');
