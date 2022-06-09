@@ -53,6 +53,8 @@ function initBoard(){
 
 initBoard();
 toastr.options.positionClass = 'toast-top-center';
+toastr.options.extendedTimeOut = 1000;
+toastr.options.timeOut = 5000; 
 
 if(isSavedData){
     for (let i = 0; i < localAnswerArray.length; i++) {
