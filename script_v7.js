@@ -33,7 +33,7 @@ var localRightGuessString = JSON.parse(localStorage.getItem(LAST_RIGHT_GUESS));
 if(localAnswerArray != 'undefined' && localAnswerArray != null && localAnswerArray.length > 0 && localRightGuessString.toUpperCase() === rightGuessString.toUpperCase()) {
     isSavedData = true;
 }
-console.log(rightGuessString)
+//console.log(rightGuessString)
 
 
 function initBoard(){ 
